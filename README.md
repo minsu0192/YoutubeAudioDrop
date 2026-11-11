@@ -2,6 +2,12 @@
 
 유튜브 영상 링크를 MP3 또는 WAV로 저장하는 macOS 앱입니다. 영상 한 개씩 처리하며, 별도의 서버나 계정 설정 없이 실행합니다.
 
+## 앱 다운로드
+
+[최신 릴리스에서 앱 ZIP 다운로드](https://github.com/minsu0192/YoutubeAudioDrop/releases/latest)
+
+Apple Silicon(M1 이상) Mac용입니다. ZIP을 풀고 `AudioDrop.app`을 응용 프로그램 폴더로 옮기세요. 별도 개발 도구 설치 없이 사용할 수 있습니다. 다운로드 파일과 함께 SHA-256 검증 파일 및 사용 안내를 제공합니다.
+
 ## 사용 방법
 
 1. 빌드한 `AudioDrop.app`을 응용 프로그램 폴더로 복사해 실행합니다.
