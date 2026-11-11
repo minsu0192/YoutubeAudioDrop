@@ -1,0 +1,10 @@
+node_modules/
+runtime/
+dist/
+dist-portable/
+release/
+.venv/
+.DS_Store
+*.log
+.env
+.env.*

@@ -1,0 +1,1 @@
+{"name":"audiodrop","version":"1.0.1","private":true,"description":"Personal local audio converter","main":"main.js","scripts":{"start":"electron .","package":"node scripts/package-portable.mjs","release":"node scripts/release.mjs"},"devDependencies":{"@electron/packager":"^20.3.0","electron":"^44.4.3"}}

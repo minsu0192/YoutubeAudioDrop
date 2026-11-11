@@ -1,0 +1,20 @@
+AudioDrop portable build
+
+Electron 44.4.3 (MIT; Chromium/Node and other component notices included
+in the Electron distribution). https://github.com/electron/electron
+
+yt-dlp 2026.10.26 official macOS standalone executable:
+https://github.com/yt-dlp/yt-dlp/releases/tag/2026.10.26
+Source: https://github.com/yt-dlp/yt-dlp/tree/2026.10.26
+License and third-party notices are in Contents/Resources/runtime.
+
+FFmpeg / FFprobe 8.1 and LAME 3.100, built for arm64 / macOS 13:
+https://ffmpeg.org/releases/ffmpeg-8.1.tar.xz
+https://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz
+Built from unmodified sources, without GPL/nonfree options or Homebrew libraries.
+The LGPL license texts, configuration and complete upstream source archives
+are included in Contents/Resources/runtime, with the build script in sources/.
+You may modify/rebuild these tools under their respective licenses.
+
+This package contains no browser cookies, user account credentials,
+downloaded media, Python virtual environment, or personal configuration.

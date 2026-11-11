@@ -1,0 +1,22 @@
+import {cp,mkdir,copyFile,access,writeFile,readFile} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
+import path from 'node:path';
+import os from 'node:os';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const folder=root+'release/AudioDrop-Mac-AppleSilicon';
+const app=folder+'/AudioDrop.app';
+const zip=path.join(os.homedir(),'Desktop','AudioDrop-Mac-AppleSilicon.zip');
+try{await access(zip);throw Error(`Delivery already exists: ${zip}`);}catch(e){if(e.code!=='ENOENT')throw e;}
+await mkdir(folder,{recursive:true});
+await cp(root+'dist-portable/AudioDrop-darwin-arm64/AudioDrop.app',app,{recursive:true,verbatimSymlinks:true});
+await copyFile(root+'친구용-사용안내.txt',folder+'/먼저 읽어주세요.txt');
+await copyFile(root+'THIRD-PARTY-NOTICES.txt',folder+'/THIRD-PARTY-NOTICES.txt');
+execFileSync('/usr/bin/codesign',['--force','--deep','--sign','-','--timestamp=none',app],{stdio:'inherit'});
+execFileSync('/usr/bin/codesign',['--verify','--deep','--strict','--verbose=2',app],{stdio:'inherit'});
+execFileSync('/usr/bin/ditto',['-c','-k','--keepParent','--norsrc',folder,zip],{stdio:'inherit'});
+const bytes=await readFile(zip);
+const hash=createHash('sha256').update(bytes).digest('hex');
+await writeFile(zip+'.sha256',`${hash}  ${path.basename(zip)}\n`);
+console.log(JSON.stringify({zip,bytes:bytes.length,sha256:hash}));

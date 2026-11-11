@@ -1,0 +1,11 @@
+import {packager} from '@electron/packager';
+import {fileURLToPath} from 'node:url';
+import {copyFile} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const version=execFileSync(root+'runtime/ffmpeg',['-version'],{encoding:'utf8'});
+if(version.includes('--enable-nonfree') || version.includes('--enable-gpl'))throw Error('Expected the locally-built LGPL audio-only FFmpeg');
+await copyFile(root+'node_modules/electron/dist/LICENSE',root+'runtime/Electron-LICENSE.txt');
+await copyFile(root+'node_modules/electron/dist/LICENSES.chromium.html',root+'runtime/Electron-THIRD-PARTY.html');
+const paths=await packager({dir:root,name:'AudioDrop',platform:'darwin',arch:'arm64',out:root+'dist-portable',overwrite:true,asar:true,extraResource:[root+'runtime'],ignore:[/^\/dist/,/^\/release/,/^\/runtime/,/^\/\.venv/,/^\/test/,/^\/scripts/],appBundleId:'local.audiodrop.desktop',appVersion:'1.0.1',appCopyright:'AudioDrop — personal audio converter',darwinDarkModeSupport:true});
+console.log(paths.join('\n'));

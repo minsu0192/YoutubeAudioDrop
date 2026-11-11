@@ -1,0 +1,10 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'"><title>AudioDrop</title><link rel="stylesheet" href="style.css"></head><body>
+<header><span class="mark">a.</span><span>AudioDrop</span><small>LOCAL AUDIO STUDIO</small></header>
+<main><div class="eyebrow">YOUR LINK. YOUR SOUND.</div><h1>링크에서, 소리로.</h1><p class="intro">원하는 오디오를 Mac에 간편하게 저장하세요.</p>
+<form id="form"><label for="url">유튜브 링크</label><input id="url" type="url" required placeholder="https://www.youtube.com/watch?v=…" autocomplete="off">
+<fieldset><legend>저장 형식</legend><label class="option"><input type="radio" name="format" value="mp3" checked><span><strong>MP3</strong><small>작은 용량 · 일상적인 감상</small></span></label><label class="option"><input type="radio" name="format" value="wav"><span><strong>WAV</strong><small>비압축 · 오디오 편집</small></span></label></fieldset>
+<p class="note">WAV로 변환해도 원본보다 음질이 좋아지지는 않아요.</p>
+<div class="folder"><div><small>저장 위치</small><div id="path"></div></div><button id="folder" type="button" class="sub">변경</button></div>
+<button id="convert" type="submit" class="primary">오디오 추출하기 <span>↗</span></button></form>
+<section id="status" aria-live="polite"><span id="badge">준비됨</span><p id="message">링크를 넣고 저장 형식을 선택하세요.</p><progress id="progress" hidden></progress><div class="actions"><button id="cancel" class="sub" hidden>취소</button><button id="reveal" class="sub">저장 폴더 열기</button></div></section>
+<footer>내 Mac에서 직접 처리 · 별도 서버 없음<br>다운로드 권한이 있는 콘텐츠에 사용하세요.</footer></main><script src="renderer.js"></script></body></html>
